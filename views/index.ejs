@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form UI</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+
+  <body class="bg-zinc-900 min-h-screen text-white">
+    <div class="max-w-6xl mx-auto px-6 py-10">
+      <!-- FORM SECTION -->
+      <form action="/create" method="post"
+        class="bg-zinc-800 max-w-md mx-auto p-8 rounded-2xl shadow-xl flex flex-col gap-6 mb-12"
+      >
+        <h2 class="text-2xl font-semibold text-center">Create Post</h2>
+
+        <input
+          class="w-full px-4 py-3 rounded-lg bg-zinc-700 text-white outline-none focus:ring-2 focus:ring-blue-500 transition"
+          type="text"
+          name="title"
+          placeholder="Enter Title"
+        />
+
+        <textarea
+          class="w-full px-4 py-3 rounded-lg bg-zinc-700 text-white resize-none h-32 outline-none focus:ring-2 focus:ring-blue-500 transition"
+          name="details"
+          placeholder="Enter Details"
+        ></textarea>
+
+        <button
+          class="bg-blue-600 hover:bg-blue-700 active:scale-95 transition-all duration-200 py-3 rounded-lg font-medium"
+          type="submit"
+        >
+          Submit
+        </button>
+      </form>
+
+      <!-- TASKS SECTION -->
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <% if(files.length>0){ %>
+         <% files.forEach(function(val){ %>
+
+        <div
+          class=" bg-zinc-800 p-6 rounded-xl shadow-lg hover:scale-105 transition duration-300"
+        >
+          <h1 class="text-xl font-semibold tracking-tight"><%= val %></h1>
+          <a class="text-blue-400 inline-block mt-3 hover:underline" href="#">
+            View Details →
+          </a>
+        </div>
+         <% }) %>
+       <%  } else { %>
+  <h3>No Task Yet....</h3>
+    <%  } %>
+
+
+
+
+
+      
+      </div>
+    </div>
+  </body>
+</html>
