@@ -25,4 +25,17 @@ app.post("/create", (req, res) => {
   );
 });
 
+app.get("/files/:fileName", (req, res) => {
+  fs.readFile(
+    `./files/${req.params.fileName}`,
+    "utf-8",
+    function (err, fileData) {
+      res.render("show", {
+        fileName: req.params.fileName,
+        fileData: fileData,
+      });
+    },
+  );
+});
+
 app.listen(3000);
