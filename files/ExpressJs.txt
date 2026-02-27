@@ -1,2 +1,0 @@
-Express Js is a framework.
-We are learning Backend Devlopment.

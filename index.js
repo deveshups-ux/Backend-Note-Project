@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const fs = require("fs");
+const { fileLoader } = require("ejs");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -34,6 +35,20 @@ app.get("/files/:fileName", (req, res) => {
         fileName: req.params.fileName,
         fileData: fileData,
       });
+    },
+  );
+});
+
+app.get("/edit/:fileName", (req, res) => {
+  res.render("edit", { fileName: req.params.fileName });
+});
+
+app.post("/edit", (req, res) => {
+  fs.rename(
+    `./files/${req.body.previous}`,
+    `./files/${req.body.new} `,
+    function (err) {
+      res.redirect("/");
     },
   );
 });
